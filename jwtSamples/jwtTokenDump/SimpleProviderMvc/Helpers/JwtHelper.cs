@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="JwtHelper.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace SimpleProviderMvc.Helpers
 {
     using Microsoft.IdentityModel.S2S.Tokens;

@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="FilterConfig.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using SimpleProviderMvc.Filters;
 using System.Web;
 using System.Web.Mvc;

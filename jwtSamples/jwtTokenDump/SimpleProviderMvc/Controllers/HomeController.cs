@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="HomeController.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using Newtonsoft.Json;
 using SimpleProviderMvc.Helpers;
 using SimpleProviderMvc.Models;

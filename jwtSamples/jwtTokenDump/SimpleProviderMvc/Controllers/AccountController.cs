@@ -1,4 +1,10 @@
-﻿namespace SimpleProviderMvc.Controllers
+//-----------------------------------------------------------------------
+// <copyright file="AccountController.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace SimpleProviderMvc.Controllers
 {
     using SimpleProviderMvc.Filters;
     using SimpleProviderMvc.Helpers;

@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="TokenHelper.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using Microsoft.IdentityModel;
 using Microsoft.IdentityModel.S2S.Protocols.OAuth2;
 using Microsoft.IdentityModel.S2S.Tokens;

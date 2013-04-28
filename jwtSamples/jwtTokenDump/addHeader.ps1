@@ -1,4 +1,4 @@
-param($target = ".", $companyname = "KPMG")
+param($target = ".", $companyname = "CedarLogic")
 $header = "//-----------------------------------------------------------------------
 // <copyright file=""{0}"" company=""{1}"">
 //     Copyright (c) {1}. All rights reserved.
@@ -8,7 +8,9 @@ $header = "//-------------------------------------------------------------------
 function Write-Header ($file) {
     $content = Get-Content $file
 
-    $hasComments = $content.StartsWith("//------")
+    $checkContent,$restOfFile = Get-Content $file
+
+    $hasComments = $checkContent.StartsWith("//------")
 
     if (-not $hasComments )
     { 

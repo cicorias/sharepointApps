@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="ModelValidationFilterAttribute.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace SimpleProviderMvc.Filters
 {
     using System;

@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="Global.asax.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

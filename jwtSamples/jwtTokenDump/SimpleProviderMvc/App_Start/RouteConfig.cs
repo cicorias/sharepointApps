@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="RouteConfig.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using SimpleProviderMvc.Helpers;
 using System;
 using System.Collections.Generic;

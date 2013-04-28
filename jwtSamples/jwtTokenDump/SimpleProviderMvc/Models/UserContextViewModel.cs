@@ -1,4 +1,10 @@
-﻿using Microsoft.IdentityModel.S2S.Tokens;
+//-----------------------------------------------------------------------
+// <copyright file="UserContextViewModel.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.IdentityModel.S2S.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;

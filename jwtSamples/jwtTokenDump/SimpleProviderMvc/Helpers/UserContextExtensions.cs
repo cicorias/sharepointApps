@@ -1,4 +1,10 @@
-﻿using SimpleProviderMvc.Models;
+//-----------------------------------------------------------------------
+// <copyright file="UserContextExtensions.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using SimpleProviderMvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

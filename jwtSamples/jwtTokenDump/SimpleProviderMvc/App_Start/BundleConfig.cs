@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="CedarLogic">
+//     Copyright (c) CedarLogic. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System.Web;
 using System.Web.Optimization;
 
