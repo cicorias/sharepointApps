@@ -1,0 +1,155 @@
+﻿@model SimpleProviderMvc.Models.UserContextViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .bigBox {
+        width: 800px;
+        height: 400px;
+    }
+
+    .smallBox {
+        width: 600px;
+        height: 100px;
+        border: 1px;
+        float: left;
+        border-color: black;
+        word-break: break-all;
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 2em;
+    }
+
+    .display-value {
+        padding-left: 2em;
+    }
+
+    .display-footer {
+        padding-left: 2.5em;
+        padding-bottom: 1.5em;
+        padding-top: 1.2em;
+        font-style: italic;
+    }
+
+    .display-heading {
+        font-weight: bold;
+    }
+
+    .body-wrapper {
+        max-width: 900px;
+    }
+</style>
+
+
+<div class="body-wrapper">
+    <fieldset>
+        <legend>token dump</legend>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Jwt Token</a></li>
+                <li><a href="#tabs-2">Jwt - Claims</a></li>
+                <li><a href="#tabs-3">Jwt - Raw token</a></li>
+                <li><a href="#tabs-4">SP Data Response</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div class="display-heading">@Html.DisplayNameFor(m => m.UserContext.AppAssertions.SPHostUrl)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.UserContext.AppAssertions.SPHostUrl)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.ActorToken)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.ActorToken)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.Audience)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.Audience)</div>
+                <div class="display-footer">The  format  is &lt;clientID&gt;&lt;target URL authority&gt;@@&lt;target realm></div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.Id)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.Id)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.Issuer)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.Issuer)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.IssuerToken.Id)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.IssuerToken.Id)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.ValidFrom)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.ValidFrom)</div>
+                <div class="display-heading">@Html.DisplayNameFor(m => m.JsonToken.ValidTo)</div>
+                <div class="display-value">@Html.DisplayFor(m => m.JsonToken.ValidTo)</div>
+            </div>
+            <div id="tabs-2">
+                <div class="display-heading">Claim Count: @Model.JsonToken.Claims.Count</div>
+                <fieldset>
+                    <legend>Claims provided</legend>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="display-heading">Claim Type</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.JsonToken.Claims)
+                        {
+                            <tr>
+                                <td class="display-heading">@item.ClaimType</td>
+                                <td><span class="smallBox">@item.Value</span>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <div>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="tabs-3">
+                <div>@Html.DisplayNameFor(m => m.JsonTokenString)</div>
+                <div>@Html.TextAreaFor(m => m.JsonTokenString, new { @class = "bigBox" })
+                </div>
+            </div>
+            <div id="tabs-4">
+                SP Web Title = @ViewBag.Stuff
+                <div>
+                    <p>User information</p>
+                    <p>Usertitle: <span data-bind="text: userTitle"></span></p>
+                    <p>Username: <span data-bind="text: userName"></span></p>
+                    <p>SP ID: <span data-bind="text: spId"></span></p>
+                    <p>Useremail: <span data-bind="text: userEmail"></span></p>
+                    <p>
+                        <button data-bind="click: update">Update</button></p>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</div>
+
+@Scripts.Render("~/bundles/knockout")
+@section Scripts{
+    <script>
+        var BasicProvider = BasicProvider || {};
+
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+        BasicProvider.UserViewModel = function UserViewModel() {
+            var self = this;
+            self.userTitle = ko.observable("");
+            self.userName = ko.observable("");
+            self.spId = ko.observable("");
+            self.userEmail = ko.observable("");
+
+            self.update = function () {
+                $.getJSON('/api/user', function (data) {
+                    self.userTitle(data[0].Title);
+                    self.userName(data[0].Name);
+                    self.spId(data[0].SpId);
+                    self.userEmail(data[0].Email);
+                });
+            };
+
+        };
+
+        ko.applyBindings(new BasicProvider.UserViewModel());
+
+
+    </script>
+
+}
+

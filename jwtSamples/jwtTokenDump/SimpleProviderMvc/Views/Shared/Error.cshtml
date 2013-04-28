@@ -1,0 +1,57 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+}
+
+<hgroup class="title">
+    <h1 class="error">
+        Error.</h1>
+    <h2 class="error">
+        An error occurred while processing your request.</h2>
+</hgroup>
+<div>
+    <input type="button" value="See Error" id="btnErrorView" /></div>
+<div id="errorMessage" style="display: none;">
+    <p>
+        Controller: @Model.ControllerName
+    </p>
+    <p>
+        Action: @Model.ActionName
+    </p>
+    <p>
+        Message: @Model.Exception.Message
+    </p>
+    <p>
+        Stack Trace: @Model.Exception.StackTrace
+    </p>
+    <p>
+        Full dump:</p>
+    <p>@ExpandException(Model.Exception)</p>
+</div>
+@helper ExpandException(Exception exception)
+    {
+        var ic = 1;
+        var currentException = exception;
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        while (null != currentException)
+        {
+            sb.AppendFormat("<br/><b>#{1}:Exception Message:</b><br/> {0}", currentException.Message, ic);
+            sb.AppendFormat("<br/><b>#{1}:Exception Stack:</b><br/> {0}", currentException.StackTrace, ic);
+            currentException = currentException.InnerException;
+            ic++;
+        }
+        
+    <p>@MvcHtmlString.Create(sb.ToString())</p>
+}
+
+@section Scripts{
+
+<script type="text/javascript">
+    $().ready(function () {
+        $('#btnErrorView').click(function () {
+            $('#errorMessage').show();
+        });
+    });
+</script>    
+}
+
