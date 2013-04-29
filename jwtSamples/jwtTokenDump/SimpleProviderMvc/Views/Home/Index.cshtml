@@ -104,15 +104,20 @@
             </div>
             <div id="tabs-4">
                 SP Web Title = @ViewBag.Stuff
-                <div>
+                <div id="user1">
                     <p>User information</p>
                     <p>Usertitle: <span data-bind="text: userTitle"></span></p>
                     <p>Username: <span data-bind="text: userName"></span></p>
                     <p>SP ID: <span data-bind="text: spId"></span></p>
                     <p>Useremail: <span data-bind="text: userEmail"></span></p>
                     <p>
-                        <button data-bind="click: update">Update</button></p>
+                        <button data-bind="click: update">Update</button>
+                    </p>
+                    <div data-bind="visible: hasError">
+                        <p data-bind="text: errorMessage"></p>
+                    </div>
                 </div>
+                <div id="user2"></div>
             </div>
         </div>
 
@@ -121,32 +126,13 @@
 
 @Scripts.Render("~/bundles/knockout")
 @section Scripts{
+    <script src="~/Scripts/App/basicProvider.js"></script>
     <script>
-        var BasicProvider = BasicProvider || {};
-
         $(function () {
             $("#tabs").tabs();
         });
 
-        BasicProvider.UserViewModel = function UserViewModel() {
-            var self = this;
-            self.userTitle = ko.observable("");
-            self.userName = ko.observable("");
-            self.spId = ko.observable("");
-            self.userEmail = ko.observable("");
-
-            self.update = function () {
-                $.getJSON('/api/user', function (data) {
-                    self.userTitle(data[0].Title);
-                    self.userName(data[0].Name);
-                    self.spId(data[0].SpId);
-                    self.userEmail(data[0].Email);
-                });
-            };
-
-        };
-
-        ko.applyBindings(new BasicProvider.UserViewModel());
+        ko.applyBindings(new BasicProvider.UserViewModel(), document.getElementById('user1'));
 
 
     </script>
