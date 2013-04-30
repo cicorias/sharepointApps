@@ -127,6 +127,7 @@
 @Scripts.Render("~/bundles/knockout")
 @section Scripts{
     <script src="~/Scripts/App/basicProvider.js"></script>
+    <script src="~/Scripts/heartcode-canvasloader.js"></script>
     <script>
         $(function () {
             $("#tabs").tabs();
@@ -134,6 +135,14 @@
 
         ko.applyBindings(new BasicProvider.UserViewModel(), document.getElementById('user1'));
 
+
+
+        var cl = new CanvasLoader('canvasloader-container');
+        cl.setDiameter(72); // default is 40
+        cl.setDensity(13); // default is 40
+        cl.setSpeed(1); // default is 2
+        cl.setFPS(25); // default is 24
+        cl.show(); // Hidden by default
 
     </script>
 

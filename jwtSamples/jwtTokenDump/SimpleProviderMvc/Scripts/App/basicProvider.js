@@ -28,6 +28,7 @@
          
         self.hasError = ko.observable(false);
 
+
     }
 })(window);
 

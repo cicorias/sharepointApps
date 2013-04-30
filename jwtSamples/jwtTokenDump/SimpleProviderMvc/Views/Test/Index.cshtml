@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index2</h2>
+<div>
+    <span data-bind="text: testfield"></span>
+    <button data-bind="click: update">Update</button>
+    <button data-bind="click: update2">Update</button>
+    <div id="canvasloader-container"></div>
+</div>
+@Scripts.Render("~/bundles/knockout")
+@section Scripts{
+    <script src="~/Scripts/heartcode-canvasloader.js"></script>
+    <script type="text/javascript">
+
+        "option strict";
+        var my = my || {};
+
+        my.cl = new CanvasLoader('canvasloader-container');
+        my.cl.setDiameter(72);
+        my.cl.setDensity(13);
+        my.cl.setSpeed(1);
+        my.cl.setFPS(25);
+
+        my.viewModel = {
+            testfield: ko.observable("init value"),
+            update: function () {
+                my.cl.show();
+            },
+            update2: function () {
+                my.cl.hide();
+            }
+
+        };
+
+
+
+        ko.applyBindings(my.viewModel);
+
+
+    </script>
+
+}
