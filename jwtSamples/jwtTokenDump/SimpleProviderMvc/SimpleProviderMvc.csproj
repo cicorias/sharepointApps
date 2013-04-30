@@ -156,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\JwtHelper.cs" />
+    <Compile Include="Helpers\TokenHelperExtension.cs" />
     <Compile Include="Helpers\UserContextExtensions.cs" />
     <Compile Include="Helpers\UserContextManager.cs" />
     <Compile Include="Models\SpAppAssertion.cs" />
